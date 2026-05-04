@@ -1,0 +1,9 @@
+Aplikasi yang akan dikembangkan merupakan sebuah aplikasi mobile berbasis Flutter yang bertujuan untuk membantu pengguna dalam mencatat dan mengelola keuangan pribadi, khususnya dalam pencatatan pengeluaran dan pemasukan sehari-hari. Aplikasi ini dirancang untuk memberikan kemudahan dalam memonitor kondisi keuangan secara praktis melalui perangkat mobile.
+
+Sistem dibangun menggunakan arsitektur client-server, di mana aplikasi mobile berperan sebagai client yang berkomunikasi dengan backend melalui API. Backend bertanggung jawab dalam pengelolaan autentikasi pengguna, penyimpanan data, serta pemrosesan logika bisnis secara terpusat.
+
+Fitur utama aplikasi meliputi registrasi dan login pengguna, pencatatan transaksi pemasukan dan pengeluaran, pengelolaan kategori, serta penyajian data dalam bentuk ringkasan dan visualisasi grafik. Pengguna dapat melihat total pengeluaran, total pemasukan, serta distribusi pengeluaran berdasarkan kategori untuk memahami pola keuangan mereka.
+
+Sebagai nilai tambah dan pemanfaatan fitur spesifik platform mobile, aplikasi ini dilengkapi dengan fitur kamera yang memungkinkan pengguna untuk mengambil foto nota atau struk transaksi secara langsung melalui aplikasi. Gambar tersebut dapat disimpan sebagai lampiran transaksi, sehingga membantu pengguna dalam menyimpan bukti pengeluaran secara digital.
+
+Aplikasi juga menyediakan fitur notifikasi pengingat untuk membantu pengguna mencatat transaksi harian secara konsisten.
