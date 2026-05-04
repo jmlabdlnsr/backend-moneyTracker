@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/', (req, res) => {
@@ -24,6 +25,17 @@ async function startServer() {
   app.use('/api/categories', require('./src/routes/categoryRoutes'));
   app.use('/api/transactions', require('./src/routes/transactionRoutes'));
   app.use('/api/summary', require('./src/routes/summaryRoutes'));
+
+  // Global Error Handler
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    if (err instanceof require('multer').MulterError) {
+      return res.status(400).json({ message: `Multer Error: ${err.message}` });
+    }
+    res.status(err.status || 500).json({
+      message: err.message || 'Internal Server Error'
+    });
+  });
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const register = async (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({ message: 'Request body is missing' });
+  }
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -35,6 +38,9 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({ message: 'Request body is missing' });
+  }
   const { email, password } = req.body;
 
   if (!email || !password) {
