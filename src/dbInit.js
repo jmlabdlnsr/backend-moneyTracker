@@ -4,11 +4,8 @@ async function initializeDatabase() {
   try {
     const connection = await pool.getConnection();
     
-    // In cloud environments like Railway, the database is often already created.
-    // We only ensure tables exist.
     console.log('Checking/Creating tables...');
 
-    // Users table
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -19,7 +16,6 @@ async function initializeDatabase() {
       )
     `);
 
-    // Categories table
     await connection.query(`
       CREATE TABLE IF NOT EXISTS categories (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -31,7 +27,6 @@ async function initializeDatabase() {
       )
     `);
 
-    // Transactions table
     await connection.query(`
       CREATE TABLE IF NOT EXISTS transactions (
         id INT AUTO_INCREMENT PRIMARY KEY,

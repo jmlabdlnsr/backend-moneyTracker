@@ -18,7 +18,6 @@ async function seedDefaultCategories() {
     const connection = await pool.getConnection();
 
     for (const cat of defaultCategories) {
-      // Check if already exists as default (user_id IS NULL)
       const [existing] = await connection.query(
         'SELECT * FROM categories WHERE name = ? AND type = ? AND user_id IS NULL',
         [cat.name, cat.type]

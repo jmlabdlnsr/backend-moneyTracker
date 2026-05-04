@@ -7,7 +7,6 @@ const getCategories = async (req, res) => {
   try {
     const connection = await pool.getConnection();
 
-    // Get user categories + default categories (where user_id is null)
     const [categories] = await connection.query(
       'SELECT * FROM categories WHERE user_id = ? OR user_id IS NULL ORDER BY name ASC',
       [userId]
@@ -49,4 +48,3 @@ const createCategory = async (req, res) => {
 };
 
 module.exports = { getCategories, createCategory };
-

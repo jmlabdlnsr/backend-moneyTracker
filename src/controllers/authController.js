@@ -13,17 +13,14 @@ const register = async (req, res) => {
   try {
     const connection = await pool.getConnection();
 
-    // Check if user exists
     const [existingUser] = await connection.query('SELECT * FROM users WHERE email = ?', [email]);
     if (existingUser.length > 0) {
       connection.release();
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Insert user
     const [result] = await connection.query(
       'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
       [name, email, hashedPassword]

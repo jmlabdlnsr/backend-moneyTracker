@@ -8,7 +8,6 @@ const getTransactions = async (req, res) => {
   try {
     const connection = await pool.getConnection();
     
-
     let query = `
       SELECT t.*, c.name as category_name 
       FROM transactions t 
@@ -44,7 +43,6 @@ const createTransaction = async (req, res) => {
 
   try {
     const connection = await pool.getConnection();
-    
 
     const [result] = await connection.query(
       'INSERT INTO transactions (user_id, category_id, amount, type, description, date, receipt_image) VALUES (?, ?, ?, ?, ?, ?, ?)',
@@ -68,7 +66,6 @@ const getTransactionById = async (req, res) => {
 
   try {
     const connection = await pool.getConnection();
-    
 
     const [transactions] = await connection.query(
       'SELECT t.*, c.name as category_name FROM transactions t JOIN categories c ON t.category_id = c.id WHERE t.id = ? AND t.user_id = ?',
@@ -96,7 +93,6 @@ const updateTransaction = async (req, res) => {
   try {
     const connection = await pool.getConnection();
 
-    // Check ownership
     const [existing] = await connection.query('SELECT * FROM transactions WHERE id = ? AND user_id = ?', [id, userId]);
     if (existing.length === 0) {
       connection.release();

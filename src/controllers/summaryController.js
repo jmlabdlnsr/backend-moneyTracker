@@ -8,7 +8,6 @@ const getSummary = async (req, res) => {
   try {
     const connection = await pool.getConnection();
 
-    // Filter by month and year if provided, otherwise overall
     let dateFilter = '';
     const params = [userId];
     if (month && year) {
@@ -16,7 +15,6 @@ const getSummary = async (req, res) => {
       params.push(month, year);
     }
 
-    // Total Income & Expense
     const [totals] = await connection.query(
       `SELECT 
         SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END) as total_income,
@@ -26,7 +24,6 @@ const getSummary = async (req, res) => {
       params
     );
 
-    // Expense by Category
     const [categoryExpenses] = await connection.query(
       `SELECT 
         c.name as category_name,
