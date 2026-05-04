@@ -8,8 +8,7 @@ const getSummary = async (req, res) => {
   try {
     const connection = await pool.getConnection();
 
-    // Filter by month
- and year if provided, otherwise overall
+    // Filter by month and year if provided, otherwise overall
     let dateFilter = '';
     const params = [userId];
     if (month && year) {

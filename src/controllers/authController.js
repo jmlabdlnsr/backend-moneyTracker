@@ -12,7 +12,6 @@ const register = async (req, res) => {
 
   try {
     const connection = await pool.getConnection();
-    
 
     // Check if user exists
     const [existingUser] = await connection.query('SELECT * FROM users WHERE email = ?', [email]);

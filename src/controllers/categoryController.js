@@ -6,7 +6,6 @@ const getCategories = async (req, res) => {
 
   try {
     const connection = await pool.getConnection();
-    
 
     // Get user categories + default categories (where user_id is null)
     const [categories] = await connection.query(

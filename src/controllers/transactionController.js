@@ -95,7 +95,6 @@ const updateTransaction = async (req, res) => {
 
   try {
     const connection = await pool.getConnection();
-    
 
     // Check ownership
     const [existing] = await connection.query('SELECT * FROM transactions WHERE id = ? AND user_id = ?', [id, userId]);
